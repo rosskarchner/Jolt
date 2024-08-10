@@ -42,9 +42,7 @@ jobs:
           folder: build/web # The folder the action should deploy.
       - name: Deploy to itch.io 🚀
         env:
-          ITCH_USERNAME: rosskarchner
-          ITCHIO_GAME: jolt
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-        run: butler push ./build/web $ITCHIO_USERNAME/$ITCHIO_GAME:HTML5
+        run: butler push ./build/web rosskarchner/jolt:html5
 
 
