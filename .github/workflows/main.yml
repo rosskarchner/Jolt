@@ -5,6 +5,7 @@ env:
   GODOT_VERSION: 4.3
   EXPORT_NAME: jolt
   PROJECT_PATH: . 
+permissions: write-all
 
 jobs:
   export-web:
@@ -39,3 +40,9 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build/web # The folder the action should deploy.
+      - name: Deploy to itch.io 🚀
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: butler push ./build/web rosskarchner/jolt:html5
+
+
