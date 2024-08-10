@@ -5,6 +5,8 @@ env:
   GODOT_VERSION: 4.3
   EXPORT_NAME: jolt
   PROJECT_PATH: . 
+permissions:
+  pages: write
 
 jobs:
   export-web:
