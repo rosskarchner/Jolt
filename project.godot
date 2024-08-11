@@ -15,12 +15,17 @@ run/main_scene="res://scenes/Opening/OpeningWithLogo.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
+[aseprite_importers]
+
+aseprite_executable_path="/home/theross/Applications/Aseprite_1.3.7-x64.AppImage"
+
 [autoload]
 
 AppConfig="*res://addons/maaacks_game_template/base/scenes/Autoloads/AppConfig.tscn"
 SceneLoader="*res://addons/maaacks_game_template/base/scenes/Autoloads/SceneLoader.tscn"
 ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectMusicController.tscn"
 ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectUISoundController.tscn"
+NetworkEvents="*res://autoload/network_events.gd"
 
 [display]
 
@@ -29,7 +34,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/nklbdev.aseprite_importers/plugin.cfg")
 
 [gui]
 
@@ -71,6 +76,10 @@ interact={
 [internationalization]
 
 locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
+
+[layer_names]
+
+2d_physics/layer_1="CONNECTIONS"
 
 [maaacks_game_template]
 

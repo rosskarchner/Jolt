@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LoadType" load_steps=4 format=3 uid="uid://b3fi7v7nma0k3"]
+
+[ext_resource type="Texture2D" uid="uid://cshl7cfwndjtw" path="res://assets/images/light-off.aseprite" id="1_ao5qy"]
+[ext_resource type="Script" path="res://resource_types/Load.gd" id="1_wvnra"]
+[ext_resource type="Texture2D" uid="uid://bi0tkbnqhtjal" path="res://assets/images/light-on.aseprite" id="2_gyuy4"]
+
+[resource]
+script = ExtResource("1_wvnra")
+off_texture = ExtResource("1_ao5qy")
+on_texture = ExtResource("2_gyuy4")
+direction_matters = false
+connection_point1 = Vector2(0, 0)
+connection_point2 = Vector2(0, 50)

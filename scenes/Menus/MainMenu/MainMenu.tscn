@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://diut1db2bsqla" path="res://scenes/Credits/Credits.tscn" id="3_xc6r2"]
 
 [node name="MainMenu" instance=ExtResource("1_4pllm")]
-game_scene_path = "res://scenes/GameScene/GameUI.tscn"
+game_scene_path = "res://scenes/GameScene/game.tscn"
 options_packed_scene = ExtResource("2_vyo1v")
 credits_packed_scene = ExtResource("3_xc6r2")
 

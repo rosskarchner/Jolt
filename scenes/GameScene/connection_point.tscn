@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://7ycpev6cp8qd"]
+
+[ext_resource type="Script" path="res://scenes/GameScene/connection_point.gd" id="1_43rxn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ybln"]
+
+[node name="ConnectionPoint" type="Area2D" groups=["connection_points"]]
+monitoring = false
+script = ExtResource("1_43rxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8ybln")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

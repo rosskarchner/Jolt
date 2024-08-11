@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConnectorShape" load_steps=3 format=3 uid="uid://bkchb0pvv1k6w"]
+
+[ext_resource type="Script" path="res://resource_types/ConnectorShape.gd" id="1_rcttm"]
+[ext_resource type="Texture2D" uid="uid://dslcpubp6acqh" path="res://assets/images/eastwest-connector.png" id="2_0nr8s"]
+
+[resource]
+script = ExtResource("1_rcttm")
+texture = ExtResource("2_0nr8s")
+connection_point1 = Vector2(0, 25)
+connection_point2 = Vector2(50, 25)

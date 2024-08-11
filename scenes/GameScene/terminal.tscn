@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://m1d1eat1omap"]
+
+[ext_resource type="Script" path="res://scenes/GameScene/terminal.gd" id="1_n0ka1"]
+[ext_resource type="PackedScene" uid="uid://7ycpev6cp8qd" path="res://scenes/GameScene/connection_point.tscn" id="2_t2ki6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2c0vy"]
+size = Vector2(25, 25)
+
+[node name="Terminal" type="Node2D"]
+script = ExtResource("1_n0ka1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_2c0vy")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -11.0
+offset_right = 34.0
+offset_bottom = 12.0
+text = "+"
+
+[node name="ConnectionPoint" parent="." instance=ExtResource("2_t2ki6")]
+position = Vector2(14, 0)
+monitoring = true
+disposition = 0

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://drwnwutwrrpb0"]
+
+[ext_resource type="PackedScene" uid="uid://m1d1eat1omap" path="res://scenes/GameScene/terminal.tscn" id="1_ttad6"]
+[ext_resource type="PackedScene" uid="uid://cy1uuyuh3e44f" path="res://scenes/GameScene/load.tscn" id="2_6vgst"]
+[ext_resource type="Resource" uid="uid://bkchb0pvv1k6w" path="res://resource_definitions/shapes/east-west.tres" id="3_2prej"]
+[ext_resource type="Resource" uid="uid://b3fi7v7nma0k3" path="res://resource_definitions/loads/simple_light.tres" id="3_71gm7"]
+[ext_resource type="PackedScene" uid="uid://cfrdeamt1c5dy" path="res://scenes/GameScene/segment.tscn" id="4_cmlyv"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(254, 124)
+
+[node name="Terminal" parent="." instance=ExtResource("1_ttad6")]
+position = Vector2(2, 32)
+
+[node name="Terminal2" parent="." instance=ExtResource("1_ttad6")]
+position = Vector2(2, -5)
+direction = 1
+
+[node name="Load" parent="." instance=ExtResource("2_6vgst")]
+position = Vector2(167, 16)
+load_type = ExtResource("3_71gm7")
+
+[node name="Segment" parent="." instance=ExtResource("4_cmlyv")]
+position = Vector2(48, -5)
+shape = ExtResource("3_2prej")
+
+[node name="Segment2" parent="." instance=ExtResource("4_cmlyv")]
+position = Vector2(51, 35)
+shape = ExtResource("3_2prej")
+
+[node name="Segment3" parent="." instance=ExtResource("4_cmlyv")]
+position = Vector2(106, -5)
+shape = ExtResource("3_2prej")
+
+[node name="Segment4" parent="." instance=ExtResource("4_cmlyv")]
+position = Vector2(109, 35)
+shape = ExtResource("3_2prej")
