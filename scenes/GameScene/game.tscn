@@ -17,7 +17,7 @@ position = Vector2(2, -5)
 direction = 1
 
 [node name="Load" parent="." instance=ExtResource("2_6vgst")]
-position = Vector2(167, 16)
+position = Vector2(173, 15)
 load_type = ExtResource("3_71gm7")
 
 [node name="Segment" parent="." instance=ExtResource("4_cmlyv")]
@@ -29,9 +29,9 @@ position = Vector2(51, 35)
 shape = ExtResource("3_2prej")
 
 [node name="Segment3" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(106, -5)
+position = Vector2(109, -30)
 shape = ExtResource("3_2prej")
 
 [node name="Segment4" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(109, 35)
+position = Vector2(114, 35)
 shape = ExtResource("3_2prej")
