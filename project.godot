@@ -34,7 +34,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/nklbdev.aseprite_importers/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
 [gui]
 
@@ -86,6 +86,8 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 
 2d_physics/layer_1="CONNECTIONS"
 2d_physics/layer_2="CLICKTODRAG"
+2d_physics/layer_3="DROPPABLE"
+2d_physics/layer_4="DROPTARGET"
 
 [maaacks_game_template]
 

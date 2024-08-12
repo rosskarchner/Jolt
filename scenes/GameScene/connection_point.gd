@@ -31,6 +31,7 @@ func query_connections() -> void:
 		connected = true
 		var overlapping_areas:Array = get_overlapping_areas()
 		if overlapping_areas[0] != connected_to:
+			
 			connected_to = overlapping_areas[0]
 	else:
 		connected = false

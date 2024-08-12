@@ -5,8 +5,9 @@ var initialized = false
 var draggable = false
 var is_inside_dropable = false
 var offset: Vector2
-var initialPos: Vector2
+var dragStartPosition: Vector2
 var dragging = false
+var drop_target:Area2D
 
 @export var shape: ConnectorShape:
 	set(newshape):
@@ -35,7 +36,6 @@ func _on_click_area_mouse_exited() -> void:
 			#scale = Vector2(1.0,1.0)
 		
 
-
 func update_shape() -> void:
 	if shape:
 		$Sprite2D.texture = shape.texture
@@ -58,8 +58,24 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 	if event.is_action_pressed("click"):
 		dragging = true
 		offset = get_global_mouse_position() - global_position
-		initialPos=global_position
+		dragStartPosition =global_position
 		Dragging.is_dragging = true
 	elif event.is_action_released("click"):
 		dragging = false
 		Dragging.is_dragging = false
+		if drop_target:
+			global_position = drop_target.global_position
+			drop_target = null
+			#initialPos = null
+		else:
+			global_position = dragStartPosition
+
+
+func _on_drop_target_detector_area_entered(area: Area2D) -> void:
+	print("entered target")
+	drop_target = area
+
+
+func _on_drop_target_detector_area_exited(area: Area2D) -> void:
+	print("exit target")
+	drop_target = null

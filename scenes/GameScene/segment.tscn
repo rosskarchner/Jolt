@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfrdeamt1c5dy"]
+[gd_scene load_steps=5 format=3 uid="uid://cfrdeamt1c5dy"]
 
 [ext_resource type="Script" path="res://scenes/GameScene/segment.gd" id="1_sjn7k"]
 [ext_resource type="PackedScene" uid="uid://7ycpev6cp8qd" path="res://scenes/GameScene/connection_point.tscn" id="2_emeri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_621c2"]
 size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54wmr"]
+size = Vector2(30, 30)
 
 [node name="Segment" type="Node2D"]
 position = Vector2(441.384, 175.819)
@@ -28,6 +31,15 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
 shape = SubResource("RectangleShape2D_621c2")
 
+[node name="DropTargetDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropTargetDetector"]
+shape = SubResource("RectangleShape2D_54wmr")
+
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
 [connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
+[connection signal="area_entered" from="DropTargetDetector" to="." method="_on_drop_target_detector_area_entered"]
+[connection signal="area_exited" from="DropTargetDetector" to="." method="_on_drop_target_detector_area_exited"]
