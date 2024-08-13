@@ -1,74 +1,53 @@
-[gd_scene load_steps=9 format=4 uid="uid://drwnwutwrrpb0"]
+[gd_scene load_steps=7 format=4 uid="uid://drwnwutwrrpb0"]
 
-[ext_resource type="PackedScene" uid="uid://m1d1eat1omap" path="res://scenes/GameScene/terminal.tscn" id="1_ttad6"]
 [ext_resource type="PackedScene" uid="uid://cy1uuyuh3e44f" path="res://scenes/GameScene/load.tscn" id="2_6vgst"]
-[ext_resource type="Resource" uid="uid://bkchb0pvv1k6w" path="res://resource_definitions/shapes/east-west.tres" id="3_2prej"]
-[ext_resource type="Resource" uid="uid://b3fi7v7nma0k3" path="res://resource_definitions/loads/simple_light.tres" id="3_71gm7"]
+[ext_resource type="PackedScene" uid="uid://73fcyu51g72" path="res://scenes/power_source.tscn" id="2_efwgb"]
 [ext_resource type="PackedScene" uid="uid://cfrdeamt1c5dy" path="res://scenes/GameScene/segment.tscn" id="4_cmlyv"]
 [ext_resource type="PackedScene" uid="uid://cp11itxbkl8u2" path="res://scenes/drop_area.tscn" id="6_dvwn4"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wee8c"]
-resource_name = "Tiles"
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0044b"]
+resource_name = "Map"
 scenes/1/scene = ExtResource("6_dvwn4")
+scenes/2/scene = ExtResource("2_efwgb")
+scenes/3/scene = ExtResource("2_6vgst")
 
-[sub_resource type="TileSet" id="TileSet_sp7h2"]
-tile_size = Vector2i(50, 50)
-sources/1 = SubResource("TileSetScenesCollectionSource_wee8c")
+[sub_resource type="TileSet" id="TileSet_28ise"]
+tile_shape = 3
+tile_size = Vector2i(94, 94)
+sources/0 = SubResource("TileSetScenesCollectionSource_0044b")
 
 [node name="Game" type="Node2D"]
 position = Vector2(254, 124)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD+/wIAAQAAAAAAAQD//wIAAQAAAAAAAQAAAAIAAQAAAAAAAQABAAIAAQAAAAAAAQACAAIAAQAAAAAAAQACAAMAAQAAAAAAAQABAAMAAQAAAAAAAQAAAAMAAQAAAAAAAQD//wMAAQAAAAAAAQD+/wMAAQAAAAAAAQD+/wQAAQAAAAAAAQD//wQAAQAAAAAAAQAAAAQAAQAAAAAAAQABAAQAAQAAAAAAAQACAAQAAQAAAAAAAQD+/wUAAQAAAAAAAQD//wUAAQAAAAAAAQAAAAUAAQAAAAAAAQABAAUAAQAAAAAAAQACAAUAAQAAAAAAAQA=")
-tile_set = SubResource("TileSet_sp7h2")
-
-[node name="Terminal" parent="." instance=ExtResource("1_ttad6")]
-position = Vector2(-112, 226)
-
-[node name="Terminal2" parent="." instance=ExtResource("1_ttad6")]
-position = Vector2(-113, 176)
-direction = 1
-
-[node name="Load" parent="." instance=ExtResource("2_6vgst")]
-position = Vector2(177, 197)
-load_type = ExtResource("3_71gm7")
+[node name="TileMapLayerHex" type="TileMapLayer" parent="."]
+position = Vector2(-26, -18)
+tile_map_data = PackedByteArray("AAD//wMAAAAAAAAAAQAAAAMAAAAAAAAAAQAAAAIAAAAAAAAAAQD//wIAAAAAAAAAAQD//wEAAAAAAAAAAQD+/wEAAAAAAAAAAQD+/wIAAAAAAAAAAgABAAIAAAAAAAAAAwD+/wMAAAAAAAAAAQD//wQAAAAAAAAAAQAAAAQAAAAAAAAAAQABAAQAAAAAAAAAAQABAAMAAAAAAAAAAQAAAAEAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_28ise")
 
 [node name="Segment" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(20, -13)
-shape = ExtResource("3_2prej")
-
-[node name="Segment9" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-178, 96)
-shape = ExtResource("3_2prej")
+position = Vector2(-133, -53)
+connection_pairs = Array[Vector2i]([Vector2i(2, -2)])
 
 [node name="Segment2" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(18, 47)
-shape = ExtResource("3_2prej")
+position = Vector2(-82, 20)
+connection_pairs = Array[Vector2i]([Vector2i(5, 2)])
 
 [node name="Segment3" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(109, -30)
-shape = ExtResource("3_2prej")
+position = Vector2(63, -54)
+connection_pairs = Array[Vector2i]([Vector2i(5, 3)])
 
 [node name="Segment4" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(114, 35)
-shape = ExtResource("3_2prej")
+position = Vector2(-179, 27)
+connection_pairs = Array[Vector2i]([Vector2i(0, 1)])
 
 [node name="Segment5" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-55, -14)
-shape = ExtResource("3_2prej")
+position = Vector2(114, 20)
+connection_pairs = Array[Vector2i]([Vector2i(4, 2)])
 
 [node name="Segment6" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-50, 51)
-shape = ExtResource("3_2prej")
+position = Vector2(-34, -55)
+connection_pairs = Array[Vector2i]([Vector2i(5, 3)])
 
 [node name="Segment7" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-130, -20)
-shape = ExtResource("3_2prej")
-
-[node name="Segment8" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-125, 45)
-shape = ExtResource("3_2prej")
-
-[node name="Segment10" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-183, 23)
-shape = ExtResource("3_2prej")
+position = Vector2(17, 19)
+connection_pairs = Array[Vector2i]([Vector2i(1, 0)])

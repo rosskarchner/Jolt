@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfrdeamt1c5dy"]
 
 [ext_resource type="Script" path="res://scenes/GameScene/segment.gd" id="1_sjn7k"]
-[ext_resource type="PackedScene" uid="uid://7ycpev6cp8qd" path="res://scenes/GameScene/connection_point.tscn" id="2_emeri"]
+[ext_resource type="Texture2D" uid="uid://d0o04x2sjmqf3" path="res://assets/images/hex-white.png" id="3_5fqso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_621c2"]
 size = Vector2(50, 50)
@@ -10,19 +10,12 @@ size = Vector2(50, 50)
 size = Vector2(30, 30)
 
 [node name="Segment" type="Node2D"]
-position = Vector2(441.384, 175.819)
 script = ExtResource("1_sjn7k")
-
-[node name="ConnectionPoint1" parent="." node_paths=PackedStringArray("partner") instance=ExtResource("2_emeri")]
-partner = NodePath("../ConnectionPoint2")
-
-[node name="ConnectionPoint2" parent="." node_paths=PackedStringArray("partner") instance=ExtResource("2_emeri")]
-position = Vector2(-1, 44)
-partner = NodePath("../ConnectionPoint1")
+connection_pairs = Array[Vector2i]([Vector2i(1, 3)])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-25, -25)
-centered = false
+show_behind_parent = true
+texture = ExtResource("3_5fqso")
 
 [node name="ClickArea" type="Area2D" parent="."]
 collision_layer = 2

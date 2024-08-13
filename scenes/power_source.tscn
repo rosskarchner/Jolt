@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://73fcyu51g72"]
+
+[ext_resource type="Texture2D" uid="uid://tmvp21h2he05" path="res://assets/images/hex-powersource.png" id="1_idmp2"]
+[ext_resource type="PackedScene" uid="uid://7ycpev6cp8qd" path="res://scenes/GameScene/connection_point.tscn" id="2_ekvq5"]
+
+[node name="PowerSource" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_idmp2")
+
+[node name="PositiveTerminal" parent="." instance=ExtResource("2_ekvq5")]
+position = Vector2(21, -34)
+disposition = 0
+
+[node name="NegativeTerminal" parent="." instance=ExtResource("2_ekvq5")]
+position = Vector2(21, 34)
+disposition = 1

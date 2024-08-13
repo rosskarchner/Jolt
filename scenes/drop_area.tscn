@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cp11itxbkl8u2"]
 
-[ext_resource type="Texture2D" uid="uid://d0483vthsf32q" path="res://assets/images/drop-area.png" id="1_v8ct4"]
+[ext_resource type="Texture2D" uid="uid://uct0gba0swcq" path="res://assets/images/hex-light-blue-export.png" id="1_n5j7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m333v"]
-size = Vector2(15, 15)
+size = Vector2(40, 40)
 
 [node name="DropArea" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_v8ct4")
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("1_n5j7x")
 
 [node name="DropTarget" type="Area2D" parent="."]
 collision_layer = 8

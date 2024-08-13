@@ -1,7 +1,6 @@
 @tool
 extends Node2D
 
-var initialized = false
 var draggable = false
 var is_inside_dropable = false
 var offset: Vector2
@@ -9,11 +8,60 @@ var dragStartPosition: Vector2
 var dragging = false
 var drop_target:Area2D
 
-@export var shape: ConnectorShape:
-	set(newshape):
-		shape=newshape
-		update_shape()
+var connection_point_scene=preload("res://scenes/GameScene/connection_point.tscn")
 
+@export var connection_pairs:Array[Vector2i]:
+	set(newpairs):
+		connection_pairs = newpairs
+		configure_control_points()
+		queue_redraw()
+
+const positions = [
+	Vector2i(21,12),
+	Vector2i(70,12),
+	Vector2i(92,46 ),
+	Vector2i(70,80),
+	Vector2i(21,79),
+	Vector2i(0,46 ),
+]
+
+func configure_control_points():
+	
+	for node in get_children():
+		if node is ConnectionPoint:
+			node.queue_free()
+	
+	if Engine.is_editor_hint():
+		return
+	for pair in connection_pairs:
+		var position1 = positions[pair[0]]
+		var position2 = positions[pair[1]]
+		create_connection_pair(position1,position2)
+	
+		
+
+func create_connection_pair(position1, position2):
+		var connector1:ConnectionPoint = connection_point_scene.instantiate()
+		var connector2:ConnectionPoint = connection_point_scene.instantiate()
+		connector1.disposition = ConnectionPoint.Disposition.PAIRED
+		connector2.disposition = ConnectionPoint.Disposition.PAIRED
+		connector1.partner = connector2
+		connector2.partner = connector1
+		connector1.position = position1 - Vector2i(46,46)
+		connector2.position = position2 - Vector2i(46,46)
+		connector1.monitoring = true
+		connector2.monitoring = true
+		add_child(connector1)
+		add_child(connector2)
+		
+func _draw() -> void:
+	for pair in connection_pairs:
+		var position1 = positions[pair[0]]
+		var position2 = positions[pair[1]]
+		draw_line(position1 - Vector2i(46,46),Vector2.ZERO,Color.BLACK,2.0)
+		draw_line(position2 - Vector2i(46,46),Vector2.ZERO,Color.BLACK,2.0)
+		print("drawing!")
+		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -36,22 +84,6 @@ func _on_click_area_mouse_exited() -> void:
 			#scale = Vector2(1.0,1.0)
 		
 
-func update_shape() -> void:
-	if shape:
-		$Sprite2D.texture = shape.texture
-		$ConnectionPoint1.position = shape.connection_point1 + Vector2(-25,-25)
-		$ConnectionPoint2.position = shape.connection_point2 + Vector2(-25,-25)
-		$ConnectionPoint1.monitoring = true
-		$ConnectionPoint2.monitoring = true
-	else:
-		$Sprite2D.texture = null
-		$ConnectionPoint1.position = Vector2.ZERO
-		$ConnectionPoint2.position = Vector2.ZERO
-		$ConnectionPoint1.monitoring = false
-		$ConnectionPoint2.monitoring = false
-	initialized = true
-
-
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Engine.is_editor_hint():
 		return
@@ -66,7 +98,6 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		if drop_target:
 			global_position = drop_target.global_position
 			drop_target = null
-			#initialPos = null
 		else:
 			global_position = dragStartPosition
 
