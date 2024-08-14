@@ -1,53 +1,17 @@
-[gd_scene load_steps=7 format=4 uid="uid://drwnwutwrrpb0"]
+[gd_scene load_steps=4 format=3 uid="uid://drwnwutwrrpb0"]
 
-[ext_resource type="PackedScene" uid="uid://cy1uuyuh3e44f" path="res://scenes/GameScene/load.tscn" id="2_6vgst"]
-[ext_resource type="PackedScene" uid="uid://73fcyu51g72" path="res://scenes/power_source.tscn" id="2_efwgb"]
-[ext_resource type="PackedScene" uid="uid://cfrdeamt1c5dy" path="res://scenes/GameScene/segment.tscn" id="4_cmlyv"]
-[ext_resource type="PackedScene" uid="uid://cp11itxbkl8u2" path="res://scenes/drop_area.tscn" id="6_dvwn4"]
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0044b"]
-resource_name = "Map"
-scenes/1/scene = ExtResource("6_dvwn4")
-scenes/2/scene = ExtResource("2_efwgb")
-scenes/3/scene = ExtResource("2_6vgst")
-
-[sub_resource type="TileSet" id="TileSet_28ise"]
-tile_shape = 3
-tile_size = Vector2i(94, 94)
-sources/0 = SubResource("TileSetScenesCollectionSource_0044b")
+[ext_resource type="PackedScene" uid="uid://j34kskfwf7ku" path="res://scenes/Levels/level_1.tscn" id="1_cw4a4"]
+[ext_resource type="Script" path="res://scenes/GameScene/game.gd" id="1_y3mbf"]
+[ext_resource type="Script" path="res://scenes/gamepiece_spawner.gd" id="3_8wmyh"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(254, 124)
+script = ExtResource("1_y3mbf")
+levels = Array[PackedScene]([ExtResource("1_cw4a4")])
 
-[node name="TileMapLayerHex" type="TileMapLayer" parent="."]
-position = Vector2(-26, -18)
-tile_map_data = PackedByteArray("AAD//wMAAAAAAAAAAQAAAAMAAAAAAAAAAQAAAAIAAAAAAAAAAQD//wIAAAAAAAAAAQD//wEAAAAAAAAAAQD+/wEAAAAAAAAAAQD+/wIAAAAAAAAAAgABAAIAAAAAAAAAAwD+/wMAAAAAAAAAAQD//wQAAAAAAAAAAQAAAAQAAAAAAAAAAQABAAQAAAAAAAAAAQABAAMAAAAAAAAAAQAAAAEAAAAAAAAAAQA=")
-tile_set = SubResource("TileSet_28ise")
+[node name="GamepieceSpawner" type="Node2D" parent="."]
+top_level = true
+position = Vector2(54, 30)
+script = ExtResource("3_8wmyh")
 
-[node name="Segment" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-133, -53)
-connection_pairs = Array[Vector2i]([Vector2i(2, -2)])
-
-[node name="Segment2" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-82, 20)
-connection_pairs = Array[Vector2i]([Vector2i(5, 2)])
-
-[node name="Segment3" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(63, -54)
-connection_pairs = Array[Vector2i]([Vector2i(5, 3)])
-
-[node name="Segment4" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-179, 27)
-connection_pairs = Array[Vector2i]([Vector2i(0, 1)])
-
-[node name="Segment5" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(114, 20)
-connection_pairs = Array[Vector2i]([Vector2i(4, 2)])
-
-[node name="Segment6" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(-34, -55)
-connection_pairs = Array[Vector2i]([Vector2i(5, 3)])
-
-[node name="Segment7" parent="." instance=ExtResource("4_cmlyv")]
-position = Vector2(17, 19)
-connection_pairs = Array[Vector2i]([Vector2i(1, 0)])
+[node name="LevelContainer" type="Node2D" parent="."]

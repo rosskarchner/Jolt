@@ -1,7 +1,10 @@
 @tool
 extends Node2D
+class_name Segment
 
-var draggable = false
+signal dropped
+
+var draggable = true
 var is_inside_dropable = false
 var offset: Vector2
 var dragStartPosition: Vector2
@@ -87,16 +90,19 @@ func _on_click_area_mouse_exited() -> void:
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Engine.is_editor_hint():
 		return
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") and draggable:
 		dragging = true
 		offset = get_global_mouse_position() - global_position
 		dragStartPosition =global_position
 		Dragging.is_dragging = true
-	elif event.is_action_released("click"):
+	elif event.is_action_released("click") and draggable:
 		dragging = false
 		Dragging.is_dragging = false
 		if drop_target:
+			drop_target.monitorable = false
 			global_position = drop_target.global_position
+			dropped.emit()
+			$ClickArea.queue_free()
 			drop_target = null
 		else:
 			global_position = dragStartPosition
