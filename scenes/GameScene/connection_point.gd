@@ -13,17 +13,11 @@ var connected_to:ConnectionPoint= null:
 	set(new_connection):
 		connected_to = new_connection
 		connection_updated.emit()
-		NetworkEvents.network_changed.emit()
-		print(new_connection)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	pass
 
 
 func query_connections() -> void:
@@ -41,7 +35,6 @@ func provides_positive_charge()->bool:
 	if disposition == Disposition.PROVIDES_POSITIVE:
 		return true
 	if disposition == Disposition.PAIRED:
-		var partner_connected = partner.connected
 		if partner.connected:
 			return partner.connected_to.provides_positive_charge()
 		else:
@@ -56,9 +49,9 @@ func provides_negative_charge() -> bool:
 		return false
 
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	query_connections()
 
 
-func _on_area_exited(area: Area2D) -> void:
+func _on_area_exited(_area: Area2D) -> void:
 	query_connections()

@@ -1,5 +1,6 @@
 @tool
 extends Node2D
+class_name Light
 
 
 @onready var connection_point1 = $ConnectionPoint1
@@ -10,17 +11,10 @@ var is_on = false:
 		is_on = status
 		update_display()
 
-func _ready() -> void:
-	if not Engine.is_editor_hint():
-		NetworkEvents.network_changed.connect(update_status)
-
-
-func _physics_process(delta: float) -> void:
-	if not Engine.is_editor_hint():
-		#update_status()
-		pass
 
 func update_status()-> void:
+	if Dragging.is_dragging:
+		return
 	var cp1_positive = connection_point1.connected && connection_point1.connected_to.provides_positive_charge()
 	var cp1_negative = connection_point1.connected && connection_point1.connected_to.provides_negative_charge()
 	var cp2_positive = connection_point2.connected && connection_point2.connected_to.provides_positive_charge()
@@ -28,9 +22,12 @@ func update_status()-> void:
 	is_on = (cp1_negative && cp2_positive) || (cp1_positive && cp2_negative)
 	
 func update_display() -> void:
+	if Engine.is_editor_hint():
+		return
 	if is_on:
 		$OnSprite.show()
 		$OffSprite.hide()
+		NetworkEvents.circuit_complete.emit()
 	else:
 		$OnSprite.hide()
 		$OffSprite.show()

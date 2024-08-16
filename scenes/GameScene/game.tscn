@@ -1,17 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://drwnwutwrrpb0"]
+[gd_scene load_steps=6 format=3 uid="uid://drwnwutwrrpb0"]
 
 [ext_resource type="PackedScene" uid="uid://j34kskfwf7ku" path="res://scenes/Levels/level_1.tscn" id="1_cw4a4"]
 [ext_resource type="Script" path="res://scenes/GameScene/game.gd" id="1_y3mbf"]
 [ext_resource type="Script" path="res://scenes/gamepiece_spawner.gd" id="3_8wmyh"]
+[ext_resource type="PackedScene" uid="uid://bg681tt0cdjvg" path="res://scenes/Levels/level_2.tscn" id="3_ld4mu"]
+[ext_resource type="PackedScene" uid="uid://clsd2khirk0ty" path="res://scenes/Levels/level_3.tscn" id="4_3vlyd"]
 
 [node name="Game" type="Node2D"]
-position = Vector2(254, 124)
 script = ExtResource("1_y3mbf")
-levels = Array[PackedScene]([ExtResource("1_cw4a4")])
+levels = Array[PackedScene]([ExtResource("1_cw4a4"), ExtResource("3_ld4mu"), ExtResource("4_3vlyd")])
 
 [node name="GamepieceSpawner" type="Node2D" parent="."]
 top_level = true
-position = Vector2(54, 30)
+position = Vector2(540, 86)
 script = ExtResource("3_8wmyh")
 
 [node name="LevelContainer" type="Node2D" parent="."]
+position = Vector2(18, 123)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="UndoButton" type="Button" parent="HUD"]
+offset_left = 774.0
+offset_top = 60.0
+offset_right = 824.0
+offset_bottom = 91.0
+text = "Undo"
+
+[connection signal="pressed" from="HUD/UndoButton" to="." method="_on_undo_button_pressed"]

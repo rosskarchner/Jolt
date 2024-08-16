@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=4 uid="uid://j34kskfwf7ku"]
+[gd_scene load_steps=7 format=4 uid="uid://clsd2khirk0ty"]
 
-[ext_resource type="PackedScene" uid="uid://cp11itxbkl8u2" path="res://scenes/drop_area.tscn" id="1_g2nlb"]
-[ext_resource type="PackedScene" uid="uid://73fcyu51g72" path="res://scenes/power_source.tscn" id="2_spqev"]
-[ext_resource type="PackedScene" uid="uid://cy1uuyuh3e44f" path="res://scenes/GameScene/load.tscn" id="3_gak4n"]
-[ext_resource type="PackedScene" uid="uid://cfrdeamt1c5dy" path="res://scenes/GameScene/segment.tscn" id="4_c6ir0"]
+[ext_resource type="PackedScene" uid="uid://cp11itxbkl8u2" path="res://scenes/drop_area.tscn" id="1_t7a8b"]
+[ext_resource type="PackedScene" uid="uid://73fcyu51g72" path="res://scenes/power_source.tscn" id="2_nl6v5"]
+[ext_resource type="PackedScene" uid="uid://cy1uuyuh3e44f" path="res://scenes/GameScene/load.tscn" id="3_h8dus"]
+[ext_resource type="PackedScene" uid="uid://cfrdeamt1c5dy" path="res://scenes/GameScene/segment.tscn" id="4_rvlkf"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ie45y"]
 resource_name = "Map"
-scenes/1/scene = ExtResource("1_g2nlb")
-scenes/2/scene = ExtResource("2_spqev")
-scenes/3/scene = ExtResource("3_gak4n")
+scenes/1/scene = ExtResource("1_t7a8b")
+scenes/2/scene = ExtResource("2_nl6v5")
+scenes/3/scene = ExtResource("3_h8dus")
 
 [sub_resource type="TileSet" id="TileSet_f5i1a"]
 tile_shape = 3
@@ -27,50 +27,50 @@ tile_set = SubResource("TileSet_f5i1a")
 visible = false
 position = Vector2(581, 178)
 
-[node name="Segment" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(-316, 142)
 connection_pairs = Array[Vector2i]([Vector2i(2, -2)])
 
-[node name="Segment2" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment2" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(-260, 28)
 connection_pairs = Array[Vector2i]([Vector2i(5, 2)])
 
-[node name="Segment11" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment11" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(-188, 159)
 connection_pairs = Array[Vector2i]([Vector2i(5, 2)])
 
-[node name="Segment12" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment12" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(-88, 334)
 connection_pairs = Array[Vector2i]([Vector2i(5, 2)])
 
-[node name="Segment3" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment3" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(192, 11)
 connection_pairs = Array[Vector2i]([Vector2i(5, 3)])
 
-[node name="Segment4" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment4" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(-247, 297)
 connection_pairs = Array[Vector2i]([Vector2i(0, 1)])
 
-[node name="Segment10" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment10" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(291, 206)
 connection_pairs = Array[Vector2i]([Vector2i(0, 1)])
 
-[node name="Segment5" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment5" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(55, -24)
 connection_pairs = Array[Vector2i]([Vector2i(4, 2)])
 
-[node name="Segment8" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment8" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(340, 106)
 connection_pairs = Array[Vector2i]([Vector2i(4, 3)])
 
-[node name="Segment9" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment9" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(298, 334)
 connection_pairs = Array[Vector2i]([Vector2i(4, 3)])
 
-[node name="Segment6" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment6" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(-91, -27)
 connection_pairs = Array[Vector2i]([Vector2i(5, 3)])
 
-[node name="Segment7" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
+[node name="Segment7" parent="PossibleSolution" instance=ExtResource("4_rvlkf")]
 position = Vector2(-370, 253)
 connection_pairs = Array[Vector2i]([Vector2i(1, 0)])

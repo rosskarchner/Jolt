@@ -24,8 +24,8 @@ AppConfig="*res://addons/maaacks_game_template/base/scenes/Autoloads/AppConfig.t
 SceneLoader="*res://addons/maaacks_game_template/base/scenes/Autoloads/SceneLoader.tscn"
 ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectMusicController.tscn"
 ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/Autoloads/ProjectUISoundController.tscn"
-NetworkEvents="*res://autoload/network_events.gd"
 Dragging="*res://autoload/dragging.gd"
+NetworkEvents="*res://autoload/network_events.gd"
 
 [display]
 

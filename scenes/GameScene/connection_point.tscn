@@ -5,7 +5,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ybln"]
 
 [node name="ConnectionPoint" type="Area2D" groups=["connection_points"]]
-monitoring = false
 script = ExtResource("1_43rxn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

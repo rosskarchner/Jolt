@@ -2,7 +2,7 @@
 extends Node2D
 class_name Segment
 
-signal dropped
+signal dropped(segment:Segment)
 
 var draggable = true
 var is_inside_dropable = false
@@ -12,11 +12,11 @@ var dragging = false
 var drop_target:Area2D
 
 var connection_point_scene=preload("res://scenes/GameScene/connection_point.tscn")
+var connection_points = []
 
 @export var connection_pairs:Array[Vector2i]:
 	set(newpairs):
 		connection_pairs = newpairs
-		configure_control_points()
 		queue_redraw()
 
 const positions = [
@@ -43,17 +43,19 @@ func configure_control_points():
 	
 		
 
+
+
 func create_connection_pair(position1, position2):
 		var connector1:ConnectionPoint = connection_point_scene.instantiate()
 		var connector2:ConnectionPoint = connection_point_scene.instantiate()
+		connection_points.append(connector1)
+		connection_points.append(connector2)
 		connector1.disposition = ConnectionPoint.Disposition.PAIRED
 		connector2.disposition = ConnectionPoint.Disposition.PAIRED
 		connector1.partner = connector2
 		connector2.partner = connector1
 		connector1.position = position1 - Vector2i(46,46)
 		connector2.position = position2 - Vector2i(46,46)
-		connector1.monitoring = true
-		connector2.monitoring = true
 		add_child(connector1)
 		add_child(connector2)
 		
@@ -63,13 +65,12 @@ func _draw() -> void:
 		var position2 = positions[pair[1]]
 		draw_line(position1 - Vector2i(46,46),Vector2.ZERO,Color.BLACK,2.0)
 		draw_line(position2 - Vector2i(46,46),Vector2.ZERO,Color.BLACK,2.0)
-		print("drawing!")
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		if dragging:
 			global_position = get_global_mouse_position()
@@ -87,7 +88,7 @@ func _on_click_area_mouse_exited() -> void:
 			#scale = Vector2(1.0,1.0)
 		
 
-func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if Engine.is_editor_hint():
 		return
 	if event.is_action_pressed("click") and draggable:
@@ -101,18 +102,21 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		if drop_target:
 			drop_target.monitorable = false
 			global_position = drop_target.global_position
-			dropped.emit()
-			$ClickArea.queue_free()
-			drop_target = null
+			dropped.emit(self)
+			configure_control_points()
+			NetworkEvents.network_changed.emit()
+			$ClickArea.hide()
 		else:
 			global_position = dragStartPosition
 
 
+func restore_playable():
+	drop_target.monitorable = true
+	$ClickArea.show()
+
 func _on_drop_target_detector_area_entered(area: Area2D) -> void:
-	print("entered target")
 	drop_target = area
 
 
-func _on_drop_target_detector_area_exited(area: Area2D) -> void:
-	print("exit target")
+func _on_drop_target_detector_area_exited(_area: Area2D) -> void:
 	drop_target = null
