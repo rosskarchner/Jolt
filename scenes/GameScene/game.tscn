@@ -21,10 +21,21 @@ position = Vector2(18, 123)
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="UndoButton" type="Button" parent="HUD"]
+unique_name_in_owner = true
 offset_left = 774.0
 offset_top = 60.0
 offset_right = 824.0
 offset_bottom = 91.0
 text = "Undo"
 
+[node name="StartOverButton" type="Button" parent="HUD"]
+unique_name_in_owner = true
+offset_left = 844.0
+offset_top = 60.0
+offset_right = 894.0
+offset_bottom = 91.0
+text = "Start Over"
+
+[connection signal="piece_count_changed" from="GamepieceSpawner" to="." method="_on_gamepiece_spawner_piece_count_changed"]
 [connection signal="pressed" from="HUD/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="HUD/StartOverButton" to="." method="_on_start_over_button_pressed"]

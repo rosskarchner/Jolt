@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dpel22uvxis52"]
 
-[ext_resource type="PackedScene" path="res://scenes/Menus/MainMenu/MainMenu.tscn" id="1_dufvr"]
+[ext_resource type="PackedScene" uid="uid://2pm27icc6qj5" path="res://scenes/Menus/MainMenu/MainMenu.tscn" id="1_dufvr"]
 [ext_resource type="Script" path="res://scenes/Menus/MainMenu/MainMenuWithAnimations.gd" id="2_2xj2y"]
 
 [sub_resource type="Animation" id="1"]

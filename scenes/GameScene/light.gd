@@ -2,6 +2,7 @@
 extends Node2D
 class_name Light
 
+var triggered = false
 
 @onready var connection_point1 = $ConnectionPoint1
 @onready var connection_point2 = $ConnectionPoint2
@@ -9,6 +10,9 @@ class_name Light
 var is_on = false:
 	set(status):
 		is_on = status
+		if status and not triggered:
+			NetworkEvents.circuit_complete.emit()
+			triggered = true
 		update_display()
 
 
@@ -27,7 +31,7 @@ func update_display() -> void:
 	if is_on:
 		$OnSprite.show()
 		$OffSprite.hide()
-		NetworkEvents.circuit_complete.emit()
+		
 	else:
 		$OnSprite.hide()
 		$OffSprite.show()

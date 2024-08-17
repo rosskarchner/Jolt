@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://73fcyu51g72"]
+[gd_scene load_steps=4 format=3 uid="uid://73fcyu51g72"]
 
+[ext_resource type="Script" path="res://scenes/power_source.gd" id="1_camaq"]
 [ext_resource type="Texture2D" uid="uid://tmvp21h2he05" path="res://assets/images/hex-powersource.png" id="1_idmp2"]
 [ext_resource type="PackedScene" uid="uid://7ycpev6cp8qd" path="res://scenes/GameScene/connection_point.tscn" id="2_ekvq5"]
 
 [node name="PowerSource" type="Node2D"]
+script = ExtResource("1_camaq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_idmp2")

@@ -11,6 +11,8 @@ var dragStartPosition: Vector2
 var dragging = false
 var drop_target:Area2D
 
+var wire_colors = [Color.BLACK, Color.CORAL, Color.DARK_GREEN]
+
 var connection_point_scene=preload("res://scenes/GameScene/connection_point.tscn")
 var connection_points = []
 
@@ -60,11 +62,13 @@ func create_connection_pair(position1, position2):
 		add_child(connector2)
 		
 func _draw() -> void:
+	var i = 0
 	for pair in connection_pairs:
 		var position1 = positions[pair[0]]
 		var position2 = positions[pair[1]]
-		draw_line(position1 - Vector2i(46,46),Vector2.ZERO,Color.BLACK,2.0)
-		draw_line(position2 - Vector2i(46,46),Vector2.ZERO,Color.BLACK,2.0)
+		draw_line(position1 - Vector2i(46,46),Vector2.ZERO,wire_colors[i],3.0)
+		draw_line(position2 - Vector2i(46,46),Vector2.ZERO,wire_colors[i],3.0)
+		i+=1
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
