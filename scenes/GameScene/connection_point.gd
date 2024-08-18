@@ -14,11 +14,6 @@ var connected_to:ConnectionPoint= null:
 		connected_to = new_connection
 		connection_updated.emit()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 
 func query_connections() -> void:
 	if monitoring && has_overlapping_areas():
@@ -35,7 +30,7 @@ func provides_positive_charge()->bool:
 	if disposition == Disposition.PROVIDES_POSITIVE:
 		return true
 	if disposition == Disposition.PAIRED:
-		if partner.connected:
+		if partner.connected and is_instance_valid(partner.connected_to):
 			return partner.connected_to.provides_positive_charge()
 		else:
 			return false
@@ -43,7 +38,7 @@ func provides_positive_charge()->bool:
 func provides_negative_charge() -> bool:
 	if disposition == Disposition.PROVIDES_NEGATIVE:
 		return true
-	elif disposition == Disposition.PAIRED and partner.connected:
+	elif disposition == Disposition.PAIRED and is_instance_valid(partner.connected_to):
 		return partner.connected_to.provides_negative_charge()
 	else:
 		return false

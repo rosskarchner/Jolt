@@ -10,6 +10,7 @@ var offset: Vector2
 var dragStartPosition: Vector2
 var dragging = false
 var drop_target:Area2D
+var played = false
 
 var wire_colors = [Color.BLACK, Color.CORAL, Color.DARK_GREEN]
 
@@ -30,11 +31,15 @@ const positions = [
 	Vector2i(0,46 ),
 ]
 
-func configure_control_points():
-	
+
+func clear_control_points():
 	for node in get_children():
 		if node is ConnectionPoint:
 			node.queue_free()
+
+func configure_control_points():
+	
+	clear_control_points()
 	
 	if Engine.is_editor_hint():
 		return
@@ -100,16 +105,22 @@ func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: 
 		offset = get_global_mouse_position() - global_position
 		dragStartPosition =global_position
 		Dragging.is_dragging = true
+		clear_control_points()
+		if drop_target:
+			drop_target.monitorable = true
 	elif event.is_action_released("click") and draggable:
 		dragging = false
 		Dragging.is_dragging = false
 		if drop_target:
-			drop_target.monitorable = false
+			
 			global_position = drop_target.global_position
-			dropped.emit(self)
+			if not played:
+				dropped.emit(self)
+				played = true
 			configure_control_points()
 			NetworkEvents.network_changed.emit()
-			$ClickArea.hide()
+			drop_target.monitorable = false
+			#$ClickArea.hide()
 		else:
 			global_position = dragStartPosition
 

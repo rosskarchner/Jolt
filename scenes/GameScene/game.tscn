@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://drwnwutwrrpb0"]
+[gd_scene load_steps=7 format=3 uid="uid://drwnwutwrrpb0"]
 
 [ext_resource type="PackedScene" uid="uid://j34kskfwf7ku" path="res://scenes/Levels/level_1.tscn" id="1_cw4a4"]
 [ext_resource type="Script" path="res://scenes/GameScene/game.gd" id="1_y3mbf"]
 [ext_resource type="Script" path="res://scenes/gamepiece_spawner.gd" id="3_8wmyh"]
 [ext_resource type="PackedScene" uid="uid://bg681tt0cdjvg" path="res://scenes/Levels/level_2.tscn" id="3_ld4mu"]
 [ext_resource type="PackedScene" uid="uid://clsd2khirk0ty" path="res://scenes/Levels/level_3.tscn" id="4_3vlyd"]
+[ext_resource type="Texture2D" uid="uid://dbs2rj63idxsp" path="res://assets/images/background.svg" id="6_r6bpj"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_y3mbf")
 levels = Array[PackedScene]([ExtResource("1_cw4a4"), ExtResource("3_ld4mu"), ExtResource("4_3vlyd")])
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture = ExtResource("6_r6bpj")
+centered = false
 
 [node name="GamepieceSpawner" type="Node2D" parent="."]
 top_level = true
@@ -16,12 +22,15 @@ position = Vector2(540, 86)
 script = ExtResource("3_8wmyh")
 
 [node name="LevelContainer" type="Node2D" parent="."]
+show_behind_parent = true
 position = Vector2(18, 123)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="UndoButton" type="Button" parent="HUD"]
 unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 0)
 offset_left = 774.0
 offset_top = 60.0
 offset_right = 824.0
@@ -30,11 +39,15 @@ text = "Undo"
 
 [node name="StartOverButton" type="Button" parent="HUD"]
 unique_name_in_owner = true
-offset_left = 844.0
+custom_minimum_size = Vector2(100, 0)
+offset_left = 886.0
 offset_top = 60.0
-offset_right = 894.0
+offset_right = 974.0
 offset_bottom = 91.0
-text = "Start Over"
+text = "Restart"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.741385, 0.741385, 0.741385, 1)
 
 [connection signal="piece_count_changed" from="GamepieceSpawner" to="." method="_on_gamepiece_spawner_piece_count_changed"]
 [connection signal="pressed" from="HUD/UndoButton" to="." method="_on_undo_button_pressed"]

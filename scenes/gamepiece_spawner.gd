@@ -29,7 +29,7 @@ func prepare():
 func add_segments_to_queue(pieces:Array[Node]) -> void:
 	pieces.shuffle()
 	for piece in pieces:
-		piece.position=Vector2.ZERO
+		piece.global_position=global_position
 		piece.dropped.connect(record_history)
 		piece.dropped.connect(reveal_next_piece)
 		piece.reparent(queue)

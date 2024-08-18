@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://7ycpev6cp8qd" path="res://scenes/GameScene/connection_point.tscn" id="2_ekvq5"]
 
 [node name="PowerSource" type="Node2D"]
+z_index = 100
 script = ExtResource("1_camaq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -20,57 +20,41 @@ sources/0 = SubResource("TileSetScenesCollectionSource_ie45y")
 
 [node name="Tiles" type="TileMapLayer" parent="."]
 position = Vector2(619, 3)
-tile_map_data = PackedByteArray("AAD//wMAAAAAAAAAAQAAAAMAAAAAAAAAAQAAAAIAAAAAAAAAAQD//wIAAAAAAAAAAQD//wEAAAAAAAAAAQD+/wEAAAAAAAAAAQD+/wIAAAAAAAAAAgABAAIAAAAAAAAAAwD+/wMAAAAAAAAAAQD//wQAAAAAAAAAAQAAAAQAAAAAAAAAAQABAAQAAAAAAAAAAQABAAMAAAAAAAAAAQAAAAEAAAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAD//wMAAAAAAAAAAQAAAAMAAAAAAAAAAQAAAAIAAAAAAAAAAQD//wEAAAAAAAAAAQD+/wEAAAAAAAAAAQD+/wIAAAAAAAAAAgABAAIAAAAAAAAAAwD+/wMAAAAAAAAAAQAAAAEAAAAAAAAAAQD//wIAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_f5i1a")
 
 [node name="PossibleSolution" type="Node2D" parent="."]
 visible = false
 position = Vector2(581, 178)
 
-[node name="Segment" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(-316, 142)
-connection_pairs = Array[Vector2i]([Vector2i(2, -2)])
-
 [node name="Segment2" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(-260, 28)
+position = Vector2(-395, 203)
 connection_pairs = Array[Vector2i]([Vector2i(5, 2)])
-
-[node name="Segment11" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(-188, 159)
-connection_pairs = Array[Vector2i]([Vector2i(5, 2)])
-
-[node name="Segment12" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(-88, 334)
-connection_pairs = Array[Vector2i]([Vector2i(5, 2)])
-
-[node name="Segment3" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(192, 11)
-connection_pairs = Array[Vector2i]([Vector2i(5, 3)])
 
 [node name="Segment4" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(-247, 297)
+position = Vector2(-92, 199)
 connection_pairs = Array[Vector2i]([Vector2i(0, 1)])
 
 [node name="Segment10" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(291, 206)
+position = Vector2(32, 213)
 connection_pairs = Array[Vector2i]([Vector2i(0, 1)])
 
 [node name="Segment5" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(55, -24)
+position = Vector2(-287, 199)
 connection_pairs = Array[Vector2i]([Vector2i(4, 2)])
 
 [node name="Segment8" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(340, 106)
+position = Vector2(-210, 232)
 connection_pairs = Array[Vector2i]([Vector2i(4, 3)])
 
 [node name="Segment9" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(298, 334)
+position = Vector2(351, 233)
 connection_pairs = Array[Vector2i]([Vector2i(4, 3)])
 
 [node name="Segment6" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(-91, -27)
+position = Vector2(461, 223)
 connection_pairs = Array[Vector2i]([Vector2i(5, 3)])
 
 [node name="Segment7" parent="PossibleSolution" instance=ExtResource("4_c6ir0")]
-position = Vector2(-370, 253)
+position = Vector2(162, 228)
 connection_pairs = Array[Vector2i]([Vector2i(1, 0)])

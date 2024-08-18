@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp11itxbkl8u2"]
+[gd_scene load_steps=4 format=3 uid="uid://cp11itxbkl8u2"]
 
-[ext_resource type="Texture2D" uid="uid://uct0gba0swcq" path="res://assets/images/hex-light-blue-export.png" id="1_n5j7x"]
+[ext_resource type="Texture2D" uid="uid://br4rrviewc4xd" path="res://assets/images/shaded-hex.png" id="1_37hyh"]
+[ext_resource type="Script" path="res://scenes/drop_area.gd" id="1_eljdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m333v"]
 size = Vector2(40, 40)
 
 [node name="DropArea" type="Node2D"]
+script = ExtResource("1_eljdf")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture = ExtResource("1_n5j7x")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.451174, 0.489952, 0.874734, 1)
+texture = ExtResource("1_37hyh")
 
 [node name="DropTarget" type="Area2D" parent="."]
 collision_layer = 8
@@ -16,3 +19,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget"]
 shape = SubResource("RectangleShape2D_m333v")
+
+[connection signal="area_entered" from="DropTarget" to="." method="_on_drop_target_area_entered"]
+[connection signal="area_exited" from="DropTarget" to="." method="_on_drop_target_area_exited"]

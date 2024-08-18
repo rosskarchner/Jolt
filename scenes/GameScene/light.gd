@@ -19,10 +19,10 @@ var is_on = false:
 func update_status()-> void:
 	if Dragging.is_dragging:
 		return
-	var cp1_positive = connection_point1.connected && connection_point1.connected_to.provides_positive_charge()
-	var cp1_negative = connection_point1.connected && connection_point1.connected_to.provides_negative_charge()
-	var cp2_positive = connection_point2.connected && connection_point2.connected_to.provides_positive_charge()
-	var cp2_negative = connection_point2.connected && connection_point2.connected_to.provides_negative_charge()
+	var cp1_positive = connection_point1.connected && is_instance_valid(connection_point1.connected_to) && connection_point1.connected_to.provides_positive_charge()
+	var cp1_negative = connection_point1.connected && is_instance_valid(connection_point1.connected_to) && connection_point1.connected_to.provides_negative_charge()
+	var cp2_positive = connection_point2.connected && is_instance_valid(connection_point2.connected_to) &&  connection_point2.connected_to.provides_positive_charge()
+	var cp2_negative = connection_point2.connected && is_instance_valid(connection_point2.connected_to) &&  connection_point2.connected_to.provides_negative_charge()
 	is_on = (cp1_negative && cp2_positive) || (cp1_positive && cp2_negative)
 	
 func update_display() -> void:
@@ -30,8 +30,11 @@ func update_display() -> void:
 		return
 	if is_on:
 		$OnSprite.show()
+		$PointLight2D.show()
 		$OffSprite.hide()
 		
 	else:
 		$OnSprite.hide()
 		$OffSprite.show()
+		$PointLight2D.hide()
+		

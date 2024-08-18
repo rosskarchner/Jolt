@@ -19,12 +19,13 @@ sources/0 = SubResource("TileSetScenesCollectionSource_ie45y")
 [node name="Level2" type="Node2D"]
 
 [node name="Tiles" type="TileMapLayer" parent="."]
-position = Vector2(637, -162)
+position = Vector2(734, -159)
 tile_map_data = PackedByteArray("AAD//wQAAAAAAAAAAQD9/wQAAAAAAAAAAQD9/wUAAAAAAAAAAQD+/wUAAAAAAAAAAQD8/wUAAAAAAAAAAgD9/wYAAAAAAAAAAQD+/wYAAAAAAAAAAQABAAQAAAAAAAAAAwAAAAQAAAAAAAAAAQAAAAUAAAAAAAAAAQAAAAMAAAAAAAAAAQD//wUAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_f5i1a")
 
 [node name="PossibleSolution" type="Node2D" parent="."]
-position = Vector2(599, 13)
+visible = false
+position = Vector2(696, 16)
 
 [node name="Segment" parent="PossibleSolution" instance=ExtResource("4_qc4sm")]
 position = Vector2(-197, 155)
