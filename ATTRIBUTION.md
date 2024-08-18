@@ -2,6 +2,10 @@
 
 Made by Ross Karchner in 2024
 
+Includes art by Benjamin Karchner
+
+Additional gameplay ideas from Benjamin Karchner and Patty Karchner
+
 
 ### Godot Game Template
 Author: [Marek Belski and contributors](https://github.com/Maaack/Godot-Game-Template/graphs/contributors)  

@@ -31,7 +31,7 @@ fill_from = Vector2(0.488889, 0.507692)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_esa4y"]
 a = Vector2(3, 8)
-b = Vector2(-24, 221)
+b = Vector2(151, 296)
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource("1_ouunn")
@@ -65,7 +65,7 @@ scale = Vector2(1.50348, 1.63511)
 texture = ExtResource("3_l84jr")
 
 [node name="FinishGameArea" type="Area2D" parent="."]
-position = Vector2(3225, 775)
+position = Vector2(3029, 904)
 collision_layer = 64
 collision_mask = 16
 metadata/_edit_group_ = true
@@ -104,7 +104,6 @@ texture = SubResource("GradientTexture2D_aftb7")
 [node name="PointLight2D3" type="PointLight2D" parent="."]
 position = Vector2(759, 159)
 scale = Vector2(1.036, 1.86572)
-enabled = false
 color = Color(1, 0.947259, 0.294813, 1)
 blend_mode = 2
 shadow_enabled = true
