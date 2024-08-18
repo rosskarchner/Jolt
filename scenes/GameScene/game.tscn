@@ -26,6 +26,7 @@ show_behind_parent = true
 position = Vector2(18, 123)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="UndoButton" type="Button" parent="HUD"]
 unique_name_in_owner = true

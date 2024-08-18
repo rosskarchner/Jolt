@@ -1,7 +1,10 @@
 extends Node2D
+signal puzzle_completed(level)
+
 
 @export var levels:Array[PackedScene]
 
+var overworld_mode = false
 var current_level = 0
 var current_level_instance = null
 
@@ -16,16 +19,23 @@ func _ready() -> void:
 	load_current_level()
 
 func level_complete():
-	var level_complete_dialog = level_complete_scene.instantiate()
 	var remaining_levels =  2 - current_level
-	level_complete_dialog.remaining_levels = remaining_levels
-	if remaining_levels > 0:
-		level_complete_dialog.clicked_next_level.connect(advance_level)
-	else:
-		level_complete_dialog.clicked_next_level.connect(func():
-			get_tree().change_scene_to_file("res://scenes/Credits/Credits.tscn")
+	if not overworld_mode:
+		var level_complete_dialog = level_complete_scene.instantiate()
+		level_complete_dialog.remaining_levels = remaining_levels
+		if remaining_levels > 0:
+			level_complete_dialog.clicked_next_level.connect(advance_level)
+		else:
+			level_complete_dialog.clicked_next_level.connect(func():
+				get_tree().change_scene_to_file("res://scenes/Credits/Credits.tscn")
 			)
-	$HUD.add_child(level_complete_dialog)
+		$HUD.add_child(level_complete_dialog)
+	
+	else:
+		await get_tree().create_timer(3.0).timeout
+		puzzle_completed.emit(current_level)
+	
+
 
 func advance_level():
 	current_level_instance.queue_free()
@@ -33,6 +43,8 @@ func advance_level():
 	load_current_level()
 
 func load_current_level():
+	if current_level == levels.size():
+		return
 	current_level_instance = levels[current_level].instantiate()
 	piece_spawner.prepare()
 	level_container.add_child(current_level_instance)

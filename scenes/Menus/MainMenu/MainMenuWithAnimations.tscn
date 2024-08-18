@@ -1,7 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpel22uvxis52"]
+[gd_scene load_steps=26 format=3 uid="uid://dpel22uvxis52"]
 
 [ext_resource type="PackedScene" uid="uid://2pm27icc6qj5" path="res://scenes/Menus/MainMenu/MainMenu.tscn" id="1_dufvr"]
 [ext_resource type="Script" path="res://scenes/Menus/MainMenu/MainMenuWithAnimations.gd" id="2_2xj2y"]
+[ext_resource type="Texture2D" uid="uid://rsegr6in3mwu" path="res://assets/images/menu-background.png" id="3_10c0l"]
+[ext_resource type="FontFile" uid="uid://bgo6tp8of0gef" path="res://assets/fonts/Quit 13.ttf" id="3_j17i2"]
+[ext_resource type="AudioStream" uid="uid://bifjeull404e1" path="res://assets/audio/348791__nebyoolae__toy-ducks-quacking.mp3" id="3_os2ap"]
+[ext_resource type="Texture2D" uid="uid://txgxgb3l33ws" path="res://assets/images/duck.png" id="6_3dwwe"]
+[ext_resource type="Texture2D" uid="uid://caws18ex3y0hw" path="res://assets/images/controlpanel.png" id="6_f0o5m"]
+[ext_resource type="Texture2D" uid="uid://cyxsww5uyxm5x" path="res://assets/images/duck2.png" id="7_egbw2"]
+[ext_resource type="Texture2D" uid="uid://bvv2145ksiq72" path="res://assets/images/Screenshot from 2024-08-18 13-44-39.png" id="7_i1n3u"]
+[ext_resource type="Texture2D" uid="uid://chykku4atas86" path="res://assets/images/Screenshot from 2024-08-18 13-50-48.png" id="8_l8w8s"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -347,28 +355,82 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
+[sub_resource type="LabelSettings" id="LabelSettings_p7xvr"]
+font = ExtResource("3_j17i2")
+font_size = 38
+font_color = Color(1, 0.933271, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iliq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3dwwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_egbw2")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 2.0
+}]
+
 [node name="MainMenu" instance=ExtResource("1_dufvr")]
 script = ExtResource("2_2xj2y")
+game_scene_path = "res://scenes/overworld.tscn"
 
-[node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_10c0l")
+centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("3_os2ap")
+autoplay = true
+
+[node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_2kqig")
 }
 
-[node name="MenuAnimationTree" type="AnimationTree" parent="." index="2"]
+[node name="MenuAnimationTree" type="AnimationTree" parent="." index="4"]
 tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
-[node name="VersionNameLabel" parent="." index="5"]
+[node name="VersionNameLabel" parent="." index="7"]
 modulate = Color(1, 1, 1, 0)
 
 [node name="Title" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
 modulate = Color(1, 1, 1, 0)
+text = "Quack Circuits"
+label_settings = SubResource("LabelSettings_p7xvr")
 
 [node name="SubTitle" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="1"]
 modulate = Color(1, 1, 1, 0)
+text = ""
 
 [node name="MenuButtons" parent="MenuContainer/VBoxContainer/MenuMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 lock = true
+
+[node name="OptionsButton" parent="MenuContainer/VBoxContainer/MenuMargin/MenuButtons" index="1"]
+visible = false
+
+[node name="Controlpanel" type="Sprite2D" parent="FlowControlContainer" index="1"]
+position = Vector2(280, 516)
+texture = ExtResource("6_f0o5m")
+
+[node name="ScreenshotFrom2024-08-1813-44-39" type="Sprite2D" parent="FlowControlContainer" index="2"]
+position = Vector2(956, 166)
+scale = Vector2(0.491304, 0.491304)
+texture = ExtResource("7_i1n3u")
+
+[node name="ScreenshotFrom2024-08-1813-50-48" type="Sprite2D" parent="FlowControlContainer" index="3"]
+position = Vector2(952, 449)
+scale = Vector2(0.412791, 0.412791)
+texture = ExtResource("8_l8w8s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="12"]
+position = Vector2(260, 154)
+sprite_frames = SubResource("SpriteFrames_iliq8")
+animation = &"walking"
+autoplay = "walking"

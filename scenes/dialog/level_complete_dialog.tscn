@@ -48,13 +48,15 @@ bbcode_enabled = true
 text = "[rainbow freq=1.0 sat=0.8 val=0.8][wave amp=50.0 freq=5.0 connected=1][center]Well Done![/center][/wave]"
 
 [node name="Placeholder" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Message" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "You've completed this circuit!"
+text = "You've completed the circuits and gotten the duck to safety!"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Placeholder2" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -64,6 +66,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-text = "On to the next challenge..."
+text = "Who made this crazy thing?"
 
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

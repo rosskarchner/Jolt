@@ -43,6 +43,6 @@ jobs:
       - name: Deploy to itch.io 🚀
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-        run: butler push ./build/web rosskarchner/jolt:html5
+        run: butler push ./build/web rosskarchner/quack-circuits:html5
 
 

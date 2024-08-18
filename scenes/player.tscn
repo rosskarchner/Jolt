@@ -1,22 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://b168w25wl21v8"]
+[gd_scene load_steps=6 format=3 uid="uid://b168w25wl21v8"]
 
 [ext_resource type="Texture2D" uid="uid://txgxgb3l33ws" path="res://assets/images/duck.png" id="1_358hj"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_rmmqv"]
+[ext_resource type="Texture2D" uid="uid://cyxsww5uyxm5x" path="res://assets/images/duck2.png" id="3_com3b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nw26m"]
-size = Vector2(79.5, 146)
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekjyp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_358hj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_com3b")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7i65n"]
+radius = 32.5
+height = 122.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 96
 script = ExtResource("1_rmmqv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7, 19)
-texture = ExtResource("1_358hj")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ekjyp")
+animation = &"walking"
+frame_progress = 0.942066
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6.75, 15)
-shape = SubResource("RectangleShape2D_nw26m")
+position = Vector2(1.5, 1)
+shape = SubResource("CapsuleShape2D_7i65n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -200
 limit_top = -100
+limit_right = 3500
+limit_bottom = 1300
+limit_smoothed = true

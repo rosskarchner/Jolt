@@ -1,10 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://t75kshd01vla"]
+[gd_scene load_steps=14 format=3 uid="uid://t75kshd01vla"]
 
+[ext_resource type="Script" path="res://scenes/overworld.gd" id="1_ouunn"]
 [ext_resource type="Texture2D" uid="uid://cr2os0h8situq" path="res://assets/images/overworld.png" id="1_scw4s"]
 [ext_resource type="PackedScene" uid="uid://b168w25wl21v8" path="res://scenes/player.tscn" id="2_bf3g1"]
+[ext_resource type="Texture2D" uid="uid://cnuojlovfapfu" path="res://assets/images/black.png" id="2_pgd1e"]
+[ext_resource type="PackedScene" uid="uid://d00b6bhlyqjra" path="res://scenes/control_panel.tscn" id="3_g2mgk"]
+[ext_resource type="Texture2D" uid="uid://bnwlbkwe8cdt1" path="res://assets/images/safezone.png" id="3_l84jr"]
+[ext_resource type="Texture2D" uid="uid://ikw1krtfh2qm" path="res://assets/images/monochrome-transparent_packed.png" id="7_xa8cg"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cudlo"]
-polygon = PackedVector2Array(-1217, -693, -1217, -692, -1246.9, -692, -1252.9, -685, -1254.9, -685, -1256.9, -640, -1258, -640, -1258, 647, -1257, 647, -1257, 676.7, -1251, 683.7, -1251, 685.3, -1244, 688.2, -1244, 690, -637, 693, -629.4, 693, -619.5, 686, -617, 686, -616, -427, -616, -432, -492, -431, -408, -431, -409, 386, -409, 475.5, -406, 481.5, -406, 484.1, -401, 487.1, -401, 488.9, -357, 490.9, -357, 492, 1244.7, 492, 1252.7, 486, 1254.6, 486, 1255.7, 481, 1257, 481, 1257, 442, 1258, 442, 1258, 172.4, 1256, 169.3, 1256, 166.9, 1248, 161.8, 1248, 160, -61, 160, -60, -652, -60, -658.2, -63, -674.4, -63, -676.9, -69, -682, -69, -683.7, -76, -684.8, -76, -686, -312, -684, -315, -684, -895, -688, -919.6, -688, -929.5, -682, -932, -682, -933, 416, -939, 416, -940, -676, -940, -682.8, -946, -688.8, -946, -690.7, -952, -691.8, -952, -693)
+polygon = PackedVector2Array(-1217, -693, -1217, -692, -1246.9, -692, -1252.9, -685, -1254.9, -685, -1256.9, -640, -1258, -640, -1258, 647, -1257, 647, -1257, 676.7, -1251, 683.7, -1251, 685.3, -1244, 688.2, -1244, 690, -637, 693, -629.4, 693, -619.5, 686, -617, 686, -616, -427, -616, -432, -492, -431, -408, -431, -409, 386, -409, 475.5, -406, 481.5, -406, 484.1, -401, 487.1, -401, 488.9, -357, 490.9, -357, 492, 1244.7, 492, 1252.7, 486, 1254.6, 486, 1255.7, 481, 1257, 481, 1257, 442, 1258, 442, 1247, 172, -61, 160, -60, -652, -60, -658.2, -63, -674.4, -63, -676.9, -69, -682, -69, -683.7, -76, -684.8, -76, -686, -312, -684, -315, -684, -895, -688, -919.6, -688, -929.5, -682, -932, -682, -933, 416, -939, 416, -940, -676, -940, -682.8, -946, -688.8, -946, -690.7, -952, -691.8, -952, -693)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mgx7"]
+size = Vector2(170, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogjfw"]
+atlas = ExtResource("7_xa8cg")
+region = Rect2(528.669, 240.781, 15.1414, 15.1413)
 
 [sub_resource type="Gradient" id="Gradient_14n5d"]
 offsets = PackedFloat32Array(0, 0.675841)
@@ -18,10 +30,17 @@ fill = 1
 fill_from = Vector2(0.488889, 0.507692)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_esa4y"]
-a = Vector2(-10, 25)
-b = Vector2(138, 262)
+a = Vector2(3, 8)
+b = Vector2(-24, 221)
 
 [node name="Overworld" type="Node2D"]
+script = ExtResource("1_ouunn")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-394, -196)
+scale = Vector2(1.1798, 1.20363)
+texture = ExtResource("2_pgd1e")
+centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1111, 586)
@@ -32,27 +51,137 @@ position = Vector2(1111, 586)
 occluder = SubResource("OccluderPolygon2D_cudlo")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 16
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(1111, 586)
 build_mode = 1
-polygon = PackedVector2Array(-1217, -693, -1217, -692, -1246.9, -692, -1252.9, -685, -1254.9, -685, -1256.9, -640, -1258, -640, -1258, 647, -1257, 647, -1257, 676.7, -1251, 683.7, -1251, 685.3, -1244, 688.2, -1244, 690, -637, 693, -629.4, 693, -619.5, 686, -617, 686, -616, -427, -616, -432, -492, -431, -408, -431, -409, 386, -409, 475.5, -406, 481.5, -406, 484.1, -401, 487.1, -401, 488.9, -357, 490.9, -357, 492, 1244.7, 492, 1252.7, 486, 1254.6, 486, 1255.7, 481, 1257, 481, 1257, 442, 1258, 442, 1258, 172.4, 1256, 169.3, 1256, 166.9, 1248, 161.8, 1248, 160, -61, 160, -60, -652, -60, -658.2, -63, -674.4, -63, -676.9, -69, -682, -69, -683.7, -76, -684.8, -76, -686, -312, -684, -315, -684, -895, -688, -919.6, -688, -929.5, -682, -932, -682, -933, 416, -939, 416, -940, -676, -940, -682.8, -946, -688.8, -946, -690.7, -952, -691.8, -952, -693)
+polygon = PackedVector2Array(-1238, -673, -1239, -639, -1239, 672, -634, 672, -633, -448, -392, -448, -390, 470, 1239, 473, 1238, 400, 1254, 402, 1263, 958, 2514, 978, 2546, -442, 1236, -430, 1252, 235, 1237, 234, 1243, 175, -78, 178, -80, -661, -915, -669, -915, 432, -958, 433, -958, -673)
+
+[node name="Safezone" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(3175.62, 754)
+scale = Vector2(1.50348, 1.63511)
+texture = ExtResource("3_l84jr")
+
+[node name="FinishGameArea" type="Area2D" parent="."]
+position = Vector2(3225, 775)
+collision_layer = 64
+collision_mask = 16
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishGameArea"]
+shape = SubResource("RectangleShape2D_5mgx7")
+
+[node name="Scroll" type="Sprite2D" parent="FinishGameArea"]
+modulate = Color(0.869714, 0.90732, 0.0717717, 1)
+scale = Vector2(10, 10)
+texture = SubResource("AtlasTexture_ogjfw")
 
 [node name="Player" parent="." instance=ExtResource("2_bf3g1")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+color = Color(0.255608, 0.255561, 0.255561, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(22, 761)
 scale = Vector2(1, 1.69375)
 color = Color(1, 0.947259, 0.294813, 1)
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_aftb7")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(464, 418)
+scale = Vector2(1, 1.69375)
+color = Color(1, 0.947259, 0.294813, 1)
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_aftb7")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(759, 159)
+scale = Vector2(1.036, 1.86572)
+enabled = false
+color = Color(1, 0.947259, 0.294813, 1)
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_aftb7")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(1929, 759)
+rotation = 1.5708
+scale = Vector2(1.036, 1.86572)
+enabled = false
+color = Color(1, 0.947259, 0.294813, 1)
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_aftb7")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+position = Vector2(3136, 673)
+rotation = 1.5708
+scale = Vector2(1.83994, 1.55783)
+color = Color(0.977922, 0.977922, 0.977922, 1)
 shadow_enabled = true
 shadow_filter = 1
 texture = SubResource("GradientTexture2D_aftb7")
 
 [node name="ShadowBlock1" type="StaticBody2D" parent="."]
 position = Vector2(194, 998)
+collision_layer = 32
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowBlock1"]
 shape = SubResource("SegmentShape2D_esa4y")
+
+[node name="ShadowBlock2" type="StaticBody2D" parent="."]
+position = Vector2(524, -89)
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowBlock2"]
+shape = SubResource("SegmentShape2D_esa4y")
+
+[node name="ShadowBlock3" type="StaticBody2D" parent="."]
+position = Vector2(1053, 759)
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowBlock3"]
+shape = SubResource("SegmentShape2D_esa4y")
+
+[node name="ControlPanel1" parent="." node_paths=PackedStringArray("light", "barrier") instance=ExtResource("3_g2mgk")]
+position = Vector2(189, 1243)
+light = NodePath("../PointLight2D2")
+barrier = NodePath("../ShadowBlock1")
+
+[node name="ControlPanel2" parent="." node_paths=PackedStringArray("light", "barrier") instance=ExtResource("3_g2mgk")]
+position = Vector2(343, -71)
+light = NodePath("../PointLight2D3")
+barrier = NodePath("../ShadowBlock2")
+
+[node name="ControlPanel3" parent="." node_paths=PackedStringArray("light", "barrier") instance=ExtResource("3_g2mgk")]
+position = Vector2(1088, 1039)
+light = NodePath("../PointLight2D4")
+barrier = NodePath("../ShadowBlock3")
+
+[node name="PuzzleLayer" type="CanvasLayer" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+position = Vector2(-295, 676)
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[connection signal="body_entered" from="FinishGameArea" to="." method="_on_finish_game_area_body_entered"]
+[connection signal="activated" from="ControlPanel1" to="." method="_on_control_panel_activated"]
+[connection signal="activated" from="ControlPanel2" to="." method="_on_control_panel_activated"]
+[connection signal="activated" from="ControlPanel3" to="." method="_on_control_panel_activated"]

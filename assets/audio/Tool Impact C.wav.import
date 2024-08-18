@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bctyjsb0v6ave"
+path="res://.godot/imported/Tool Impact C.wav-bf9366e7eb5badfab2963c1253874c9c.sample"
+
+[deps]
+
+source_file="res://assets/audio/Tool Impact C.wav"
+dest_files=["res://.godot/imported/Tool Impact C.wav-bf9366e7eb5badfab2963c1253874c9c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
