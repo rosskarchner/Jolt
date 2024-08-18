@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dpel22uvxis52"]
+[gd_scene load_steps=27 format=3 uid="uid://dpel22uvxis52"]
 
 [ext_resource type="PackedScene" uid="uid://2pm27icc6qj5" path="res://scenes/Menus/MainMenu/MainMenu.tscn" id="1_dufvr"]
 [ext_resource type="Script" path="res://scenes/Menus/MainMenu/MainMenuWithAnimations.gd" id="2_2xj2y"]
@@ -10,6 +10,21 @@
 [ext_resource type="Texture2D" uid="uid://cyxsww5uyxm5x" path="res://assets/images/duck2.png" id="7_egbw2"]
 [ext_resource type="Texture2D" uid="uid://bvv2145ksiq72" path="res://assets/images/Screenshot from 2024-08-18 13-44-39.png" id="7_i1n3u"]
 [ext_resource type="Texture2D" uid="uid://chykku4atas86" path="res://assets/images/Screenshot from 2024-08-18 13-50-48.png" id="8_l8w8s"]
+[ext_resource type="Texture2D" uid="uid://cucfca4tpfm5c" path="res://assets/images/duck-around.png" id="9_tjhhj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iliq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3dwwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_egbw2")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 2.0
+}]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -360,20 +375,6 @@ font = ExtResource("3_j17i2")
 font_size = 38
 font_color = Color(1, 0.933271, 0, 1)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_iliq8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_3dwwe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_egbw2")
-}],
-"loop": true,
-"name": &"walking",
-"speed": 2.0
-}]
-
 [node name="MainMenu" instance=ExtResource("1_dufvr")]
 script = ExtResource("2_2xj2y")
 game_scene_path = "res://scenes/overworld.tscn"
@@ -382,21 +383,46 @@ game_scene_path = "res://scenes/overworld.tscn"
 texture = ExtResource("3_10c0l")
 centered = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+[node name="Duck-around" type="Sprite2D" parent="." index="1"]
+position = Vector2(650, 601)
+scale = Vector2(0.157413, 0.157413)
+texture = ExtResource("9_tjhhj")
+
+[node name="Controlpanel" type="Sprite2D" parent="." index="2"]
+position = Vector2(280, 516)
+texture = ExtResource("6_f0o5m")
+
+[node name="ScreenshotFrom2024-08-1813-44-39" type="Sprite2D" parent="." index="3"]
+position = Vector2(956, 166)
+scale = Vector2(0.491304, 0.491304)
+texture = ExtResource("7_i1n3u")
+
+[node name="ScreenshotFrom2024-08-1813-50-48" type="Sprite2D" parent="." index="4"]
+position = Vector2(952, 449)
+scale = Vector2(0.412791, 0.412791)
+texture = ExtResource("8_l8w8s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
+position = Vector2(260, 154)
+sprite_frames = SubResource("SpriteFrames_iliq8")
+animation = &"walking"
+autoplay = "walking"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource("3_os2ap")
 autoplay = true
 
-[node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 libraries = {
 "": SubResource("AnimationLibrary_2kqig")
 }
 
-[node name="MenuAnimationTree" type="AnimationTree" parent="." index="4"]
+[node name="MenuAnimationTree" type="AnimationTree" parent="." index="9"]
 tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
-[node name="VersionNameLabel" parent="." index="7"]
+[node name="VersionNameLabel" parent="." index="12"]
 modulate = Color(1, 1, 1, 0)
 
 [node name="Title" parent="MenuContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
@@ -414,23 +440,3 @@ lock = true
 
 [node name="OptionsButton" parent="MenuContainer/VBoxContainer/MenuMargin/MenuButtons" index="1"]
 visible = false
-
-[node name="Controlpanel" type="Sprite2D" parent="FlowControlContainer" index="1"]
-position = Vector2(280, 516)
-texture = ExtResource("6_f0o5m")
-
-[node name="ScreenshotFrom2024-08-1813-44-39" type="Sprite2D" parent="FlowControlContainer" index="2"]
-position = Vector2(956, 166)
-scale = Vector2(0.491304, 0.491304)
-texture = ExtResource("7_i1n3u")
-
-[node name="ScreenshotFrom2024-08-1813-50-48" type="Sprite2D" parent="FlowControlContainer" index="3"]
-position = Vector2(952, 449)
-scale = Vector2(0.412791, 0.412791)
-texture = ExtResource("8_l8w8s")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="12"]
-position = Vector2(260, 154)
-sprite_frames = SubResource("SpriteFrames_iliq8")
-animation = &"walking"
-autoplay = "walking"

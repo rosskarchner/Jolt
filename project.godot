@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Quack Circuits"
-run/main_scene="res://scenes/Menus/MainMenu/MainMenuWithAnimations.tscn"
+run/main_scene="res://scenes/Opening/OpeningWithLogo.tscn"
 config/features=PackedStringArray("4.3")
 
 [aseprite_importers]

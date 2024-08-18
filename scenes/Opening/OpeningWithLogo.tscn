@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://by36q7yiq83sm"]
 
 [ext_resource type="PackedScene" uid="uid://cer4ojuxhxy6a" path="res://scenes/Opening/Opening.tscn" id="1_d5jxr"]
-[ext_resource type="Texture2D" uid="uid://dlwfbbv2cw7a8" path="res://assets/images/logo_vertical_color_dark.png" id="2_aryxs"]
+[ext_resource type="Texture2D" uid="uid://bpp1xfqayb2iv" path="res://assets/images/GWJ-Full-Logo-tag-4k.png" id="2_62s85"]
 
 [node name="Opening" instance=ExtResource("1_d5jxr")]
-images = Array[Texture2D]([ExtResource("2_aryxs")])
+images = Array[Texture2D]([ExtResource("2_62s85")])
